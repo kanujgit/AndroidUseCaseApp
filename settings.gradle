@@ -1,0 +1,3 @@
+include ':androidjetpackdemo'
+include ':app'
+rootProject.name = "UseCaseDemoApplication"
