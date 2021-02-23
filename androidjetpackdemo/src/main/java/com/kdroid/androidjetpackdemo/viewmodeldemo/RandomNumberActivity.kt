@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.kdroid.androidjetpackdemo.R
+
 
 class RandomNumberActivity : AppCompatActivity() {
     val TAG: String = RandomNumberActivity::class.simpleName.toString()
@@ -14,14 +16,16 @@ class RandomNumberActivity : AppCompatActivity() {
         setContentView(R.layout.activity_random_number)
         Log.d(TAG, "onCreate() called with: savedInstanceState = $savedInstanceState")
 
-      //  var randomGenerator = RandomGenerator()
+        val randomGeneratorViewModel: RandomGenerator =
+            ViewModelProvider(this).get(RandomGenerator::class.java)
 
-     //   findViewById<TextView>(R.id.tv_random).setText(randomGenerator.getNumber())
+        randomGeneratorViewModel.getTimerData()
+        randomGeneratorViewModel.postMutableLiveData.observe(this, Observer {
+            Log.d(TAG, it);
+            findViewById<TextView>(R.id.tv_random).text = it
+        })
 
-
-        val randomGeneratorViewModel:RandomGenerator = ViewModelProvider(this).get(RandomGenerator::class.java);
-
-        findViewById<TextView>(R.id.tv_random).setText(randomGeneratorViewModel.getNumber())
-
+//        findViewById<TextView>(R.id.tv_random).text =
+//            randomGeneratorViewModel.Log.d(TAG, randomGeneratorViewModel.hashCode().toString())
     }
 }

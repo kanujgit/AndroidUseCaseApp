@@ -1,18 +1,42 @@
 package com.kdroid.usecasedemoapplication
 
+
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
+import com.kdroid.usecasedemoapplication.databinding.ActivityMainBinding
+import com.kdroid.usecasedemoapplication.fragments.Demo1Fragment
+import com.kdroid.usecasedemoapplication.fragments.Demo2Fragment
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : BaseActivity() {
+    lateinit var binding: ActivityMainBinding
     val TAG: String = MainActivity::class.simpleName.toString()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         Log.d(TAG, "onCreate() called ")
 
-//        val service = Intent(this.getApplicationContext(), HelloService::class.java)
-//        startForegroundService(service)
+
+        binding.add.setOnClickListener {
+            addFragment(
+                Demo1Fragment(),
+                null,
+                R.id.frame,
+                true,
+                Demo1Fragment::class.simpleName
+            )
+        }
+        binding.replace.setOnClickListener {
+            replaceFragment(
+                Demo2Fragment(),
+                null,
+                R.id.frame,
+                false,
+                Demo2Fragment::class.simpleName
+            )
+        }
+
     }
 
     override fun onStart() {
