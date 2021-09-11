@@ -19,9 +19,9 @@ class RandomNumberActivity : AppCompatActivity() {
         val randomGeneratorViewModel: RandomGenerator =
             ViewModelProvider(this).get(RandomGenerator::class.java)
 
-        randomGeneratorViewModel.getTimerData()
+        randomGeneratorViewModel.getNumber()
         randomGeneratorViewModel.postMutableLiveData.observe(this, Observer {
-            Log.d(TAG, it);
+            Log.d(TAG, " $it  and updated ")
             findViewById<TextView>(R.id.tv_random).text = it
         })
 

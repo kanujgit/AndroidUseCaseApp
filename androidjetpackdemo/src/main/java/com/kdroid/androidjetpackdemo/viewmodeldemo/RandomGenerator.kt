@@ -15,12 +15,13 @@ public class RandomGenerator : ViewModel() {
 
     var randomNumber: String? = null;
 
-    fun getNumber(): String {
+    fun getNumber() {
         Log.d(TAG, "getNumber");
         if (randomNumber == null) {
             randomNumber = createRandomNumber();
         }
-        return randomNumber as String
+        val data = randomNumber as String
+        postMutableLiveData.value = data
     }
 
     fun createRandomNumber(): String {

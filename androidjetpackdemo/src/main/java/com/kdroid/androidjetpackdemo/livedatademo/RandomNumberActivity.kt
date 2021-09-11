@@ -21,7 +21,9 @@ class RandomNumberActivity : AppCompatActivity() {
 //        findViewById<TextView>(R.id.tv_random).setText(randomGeneratorViewModel.getNumber())
         randomGeneratorViewModel.randomNumber?.observe(
             this,
-            Observer { findViewById<TextView>(R.id.tv_random).text = it })
+            Observer {
+                Log.d(TAG,"it")
+                findViewById<TextView>(R.id.tv_random).text = it })
 
 
     }
