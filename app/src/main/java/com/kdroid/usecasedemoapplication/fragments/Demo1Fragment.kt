@@ -1,5 +1,6 @@
 package com.kdroid.usecasedemoapplication.fragments
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,8 +27,14 @@ class Demo1Fragment : Fragment() {
     val TAG: String = MainActivity::class.simpleName.toString()
 
 
+    override fun onAttach(activity: Activity) {
+        super.onAttach(activity)
+        Log.d(TAG, "onAttach");
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "onCreate");
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)

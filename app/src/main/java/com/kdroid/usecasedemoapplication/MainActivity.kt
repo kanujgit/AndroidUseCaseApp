@@ -32,7 +32,7 @@ class MainActivity : BaseActivity() {
                 Demo2Fragment(),
                 null,
                 R.id.frame,
-                false,
+                true,
                 Demo2Fragment::class.simpleName
             )
         }

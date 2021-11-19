@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UseCaseDemoApplication">
-        <activity android:name=".coroutineretrofit.RetrofitCoroutineDemo"
-            android:screenOrientation="fullSensor">
+        <!--<activity android:name=".coroutineretrofit.RetrofitCoroutineDemo"-->
+        <activity android:name=".MainActivity">
+        android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,9 +40,7 @@
         <activity
             android:name=".launchmodedemo.FourthActivity"
             android:launchMode="singleInstance"></activity>
-        <activity android:name=".MainActivity">
 
-        </activity>
 
         <service android:name=".HelloService" />
         <meta-data

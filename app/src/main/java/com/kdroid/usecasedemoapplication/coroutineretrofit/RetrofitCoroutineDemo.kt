@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.kdroid.usecasedemoapplication.databinding.ActivityRetrofitCoroutineDemoBinding
 
 class RetrofitCoroutineDemo : AppCompatActivity() {
@@ -28,7 +26,7 @@ class RetrofitCoroutineDemo : AppCompatActivity() {
         // init view model
         postViewModel = ViewModelProvider(this, viewModelFactory)[PostViewModel::class.java]
         postViewModel.getPost()
-        postViewModel.postMutableLiveData.observe(this, Observer {
+        postViewModel.postMutableLiveData.observe(this, androidx.lifecycle.Observer {
             postAdapter.setData(it as ArrayList<PostModel>)
             Log.d(TAG, it.toString())
             binding.progressBar.visibility = View.GONE
@@ -45,9 +43,6 @@ class RetrofitCoroutineDemo : AppCompatActivity() {
             adapter = postAdapter
            binding.recylerView.recycledViewPool.setMaxRecycledViews(0,12)
             binding.recylerView.setItemViewCacheSize(0)
-
-
-
         }
     }
 
